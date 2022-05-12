@@ -3,24 +3,23 @@ package le4;
 import java.util.Scanner;
 
 public class Exercicio2 {
-	static int f=1;
-	public static int divisao(int num, int div) {
-		int t=0;
-		if (num > div) {
-			f++;
-			return divisao(num - div, div);
+	public static int divisao(int num, int den, int r) {
+		if (num>=den) {	//Caso numerador seja maior ou igual ele irá entrar no if e realizar as operações e calcular a quantidade de vezes que o denominador foi subtraido do numerador
+			r++;	//variavel para calcular a quantidade de vezes que o denominador foi subtraido do númerador.
+			return divisao(num-den,den,r);
 		}
-		t = f;
-		return (t);
+		else {
+			return r;	//retornar o resultado para o main
+		}
 	}
 
 	public static void main(String[] args) {
 		Scanner ent = new Scanner(System.in);
-		int numerador, denominador;
+		int numerador, denominador, r=0;
 		System.out.println("Digite o númerador e o denominador:");
 		numerador = ent.nextInt();
 		denominador = ent.nextInt();
-		System.out.println("A divisão é: " + divisao(numerador, denominador));
+		System.out.println("A divisão é: " + divisao(numerador, denominador,r));	//Chamar a função.
 		ent.close();
 	}
 
