@@ -3,38 +3,34 @@ package src;
 import java.util.Scanner;
 
 public class Exer1 {
+	public static void preenc(double [] vet) {	//procedimento para preencher o vetor
+		Scanner ent = new Scanner(System.in);
+		for(int pos = 0; pos<10;pos++) {	//repetição para preencher o vetor com 10 notas
+			System.out.println("Digite um número:");
+			vet [pos] = ent.nextInt();
+		}
+	}
+	
 
 	public static void medias(double notas []) {
-		double media = 0, c = 0;
+		double media = 0, c = 0;	//uma variavel para a media e outra variavel para alunos acima da media
 		for (int j = 0; j<10; j++) {
-			media += notas[j];
+			media += notas[j];	//somar todas as notas em uma variavel
 		}
-		media = media/10;
+		media = media/10;	//dividir as notas totais pela quantidade de notas e descobrir a media
 		System.out.println("A media foi: " + media);
 		for (int m = 0; m<10; m++) {
 			if(notas[m]>media) {
-				c++;			}
+				c++;	//contar quantos alunos ficaram acima da media
+				}	
 		}
-		System.out.println("Nota acima da média: " + c);
-	}
-
-	public static void vetor(double notas[]) {
-		double[] nota = new double[10];
-		for (int i = 0; i < 10; i++) {
-			nota[i] = notas[i];
-		}
-		medias(nota);
+		System.out.println("alunos acima da média: " + c);
 	}
 
 	public static void main(String[] args) {
 		double[] notas = new double[10];
-		Scanner ent = new Scanner(System.in);
-		for (int i = 0; i < 10; i++) {
-			System.out.println("Digite a nota do aluno");
-			notas[i] = ent.nextDouble();
-		}
-		vetor(notas);
-		ent.close();
+		preenc(notas);	//chamar o procedimento para preencher o vetor
+		medias(notas);	//chamar o procedimento para calcular media e alunos acima da media
 	}
 
 }

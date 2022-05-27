@@ -3,7 +3,7 @@ package src;
 import java.util.Scanner;
 
 public class Exer5 {
-	public static void preenc(int [][] matA,int [][]matB) {
+	public static void preenc(int [][] matA,int [][]matB) {	//procedimento para preencher duas matrizes
 		Scanner ent = new Scanner(System.in);
 		for(int ln=0;ln<matA.length;ln++) {
 			for(int col=0;col<matA[0].length;col++) {
@@ -18,7 +18,7 @@ public class Exer5 {
 			}
 		}
 	}
-	public static int [][] soma(int [][]matA,int[][]matB,int [][]soma){
+	public static int [][] soma(int [][]matA,int[][]matB,int [][]soma){	//função para somar uma matriz a outra e salvar em outra matriz
 		for(int ln=0;ln<matA.length;ln++) {
 			for(int col=0;col<matA[0].length;col++) {
 			soma[ln][col]=matA[ln][col]+matB[ln][col];
@@ -26,7 +26,7 @@ public class Exer5 {
 		}
 		return soma;
 	}
-	public static int [][] dif(int [][]matA,int[][]matB,int [][] dif){
+	public static int [][] dif(int [][]matA,int[][]matB,int [][] dif){	//função para subtrair uma matriz a outra e salvar em outra matriz
 		for(int ln=0;ln<matA.length;ln++) {
 			for(int col=0;col<matA[0].length;col++) {
 			dif[ln][col]=matA[ln][col]-matB[ln][col];
@@ -43,12 +43,12 @@ public class Exer5 {
 		preenc(matA,matB);
 		soma(matA,matB,S);
 		soma(matA,matB,Sd);
-		for(int ln=0;ln<matB.length;ln++) {
+		for(int ln=0;ln<matB.length;ln++) {	//percorrer todos os elementos de uma matriz e printar todos os elementos dela
 			for(int col=0;col<matB[0].length;col++) {
 		System.out.println("A soma das duas matrizes é:" + S[ln][col]);
 			}
 		}
-		for(int ln=0;ln<matB.length;ln++) {
+		for(int ln=0;ln<matB.length;ln++) {	//percorrer todos os elementos de uma matriz e printar todos os elementos dela
 			for(int col=0;col<matB[0].length;col++) {
 		System.out.println("A soma das duas matrizes é:" + Sd[ln][col]);
 			}
