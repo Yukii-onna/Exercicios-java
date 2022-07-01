@@ -10,7 +10,7 @@ public class Trabalho {
 		Scanner ent1 = new Scanner(System.in);
 		System.out.println("Digite o nome do arquivo a ser lido:");
 		String local = ent1.nextLine();
-		File arq = new File("C:\\Users\\joojp\\Desktop\\texto\\tp\\" + local + ".txt"); // chamar o arquivo
+		File arq = new File("C:\\temp\\" + local + ".txt"); // chamar o arquivo
 		int pos = 0, ln = 0;
 		String[] linha;
 		try {
@@ -25,7 +25,7 @@ public class Trabalho {
 						if (ln == 2) {
 							tabela[ln][col] = 0; // deixar zerado na matriz as vendas do dia;
 						} else {
-							tabela[ln][col] = db; // salvar em uma matriz o estoque, preÁo de venda e custo de procuÁ„o
+							tabela[ln][col] = db; // salvar em uma matriz o estoque, pre√ßo de venda e custo de procu√ß√£o
 						}
 						pos++;
 					}
@@ -34,14 +34,14 @@ public class Trabalho {
 			}
 			arq1.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo n„o encontrado");
+			System.out.println("Arquivo n√£o encontrado");
 			e.printStackTrace();
 		}
 	}
 
-	public static boolean verificaestoque(int col, double[][] tabela) { // funÁ„o para verificar se h· estoque
+	public static boolean verificaestoque(int col, double[][] tabela) { // fun√ß√£o para verificar se h√° estoque
 																		// disponivel
-		if (tabela[0][col] > 0) { // verifica se h· estoque
+		if (tabela[0][col] > 0) { // verifica se h√° estoque
 			double vn = tabela[0][col] - 1.0;
 			tabela[0][col] = vn; // modifica na tabela para retirar a compra, caso haja estoque
 			return true;
@@ -50,7 +50,7 @@ public class Trabalho {
 		}
 	}
 
-	public static double lucro(int IL, int IE, int AL, int AE, double[][] tabela) {	// funÁ„o para calcular o lucro total
+	public static double lucro(int IL, int IE, int AL, int AE, double[][] tabela) {	// fun√ß√£o para calcular o lucro total
 		double lucro1 = IL * (tabela[1][0]);
 		lucro1 -= (IL * (tabela[3][0]));
 
@@ -70,8 +70,8 @@ public class Trabalho {
 	public static void preencharq(double[][] tabela, double lucrototal) {	// procedimento para preencher um novo arquivo
 		try {
 			LocalDate data = LocalDate.now();
-			String exer = ("RelatÛrio " + data);	//Criar um novo arquivo com a data
-			FileWriter arq = new FileWriter("C:\\Users\\joojp\\Desktop\\texto\\tp\\" + exer + ".txt");
+			String exer = ("Relat√≥rio " + data);	//Criar um novo arquivo com a data
+			FileWriter arq = new FileWriter("C:\\temp\\" + exer + ".txt");
 			for (int ln = 0; ln < 4; ln++) {
 				for(int col=0;col<4;col++) {
 					arq.write(Double.toString(tabela[ln][col]));	//Escrever no arquivo a nova tabela
@@ -93,8 +93,8 @@ public class Trabalho {
 		int IL = 0, IE = 0, AL = 0, AE = 0;
 
 		preench(tabela); // procedimento para preencher a tabela
-		while (i == 0) { // laÁo para realizar o registro de vendas
-			System.out.println("Deseja realizar alguma venda? (1-Sim 2-N„o)");
+		while (i == 0) { // la√ßo para realizar o registro de vendas
+			System.out.println("Deseja realizar alguma venda? (1-Sim 2-N√£o)");
 			int j = ent.nextInt();
 
 			switch (j) {
@@ -104,39 +104,39 @@ public class Trabalho {
 				j = ent.nextInt();
 				switch (j) {
 				case 1:
-					if (verificaestoque(0, tabela)) { // verificaÁ„o de estoque
+					if (verificaestoque(0, tabela)) { // verifica√ß√£o de estoque
 						IL++;
 						tabela[2][0]=IL;
 						break;
 					} else {
-						System.out.println("Venda inv·lida. Falta de estoque.");
+						System.out.println("Venda inv√°lida. Falta de estoque.");
 					}
 					break;
 				case 2:
-					if (verificaestoque(1, tabela)) { // verificaÁ„o de estoque
+					if (verificaestoque(1, tabela)) { // verifica√ß√£o de estoque
 						IE++;
 						tabela[2][1]=IE;
 						break;
 					} else {
-						System.out.println("Venda inv·lida. Falta de estoque.");
+						System.out.println("Venda inv√°lida. Falta de estoque.");
 					}
 					break;
 				case 3:
-					if (verificaestoque(2, tabela)) { // verificaÁ„o de estoque
+					if (verificaestoque(2, tabela)) { // verifica√ß√£o de estoque
 						AL++;
 						tabela[2][2]=AL;
 						break;
 					} else {
-						System.out.println("Venda inv·lida. Falta de estoque.");
+						System.out.println("Venda inv√°lida. Falta de estoque.");
 					}
 					break;
 				case 4:
-					if (verificaestoque(3, tabela)) { // verificaÁ„o de estoque
+					if (verificaestoque(3, tabela)) { // verifica√ß√£o de estoque
 						AE++;
 						tabela[2][3]=AE;
 						break;
 					} else {
-						System.out.println("Venda inv·lida. Falta de estoque.");
+						System.out.println("Venda inv√°lida. Falta de estoque.");
 					}
 					break;
 				}
@@ -147,7 +147,7 @@ public class Trabalho {
 				break;
 
 			default:
-				System.out.println("OperaÁ„o inv·lida");
+				System.out.println("Opera√ß√£o inv√°lida");
 			}
 
 			preencharq(tabela, lucro(IL, IE, AL, AE, tabela));
